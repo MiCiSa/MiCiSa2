@@ -24,7 +24,6 @@ import visao.componentes.Rolagem;
  */
 public class ExibirPessoas {
 
-    
     /**
      * Metodo estatico responsavel por organizar a lista dos funcionarios
      */
@@ -40,10 +39,11 @@ public class ExibirPessoas {
         Home1.pnlPessoas.revalidate();
 
     }
-/**
- * metodo estatico responsavel  por organizar a lista dos 
- * funcionarios com base nos funcionarios activos
- */
+
+    /**
+     * metodo estatico responsavel por organizar a lista dos funcionarios com
+     * base nos funcionarios activos
+     */
     public static void actualizarActivos() {
         Home1.pnlPessoas.removeAll();
         Home1.pnlPessoas.repaint();
@@ -59,10 +59,11 @@ public class ExibirPessoas {
         Home1.pnlPessoas.add(BorderLayout.CENTER, new Rolagem(new Rolagem(pess), JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER));
         Home1.pnlPessoas.revalidate();
     }
-/**
- * metodo estatico responsavel  por organizar a lista dos 
- * funcionarios com base nos funcionarios demitidos
- */
+
+    /**
+     * metodo estatico responsavel por organizar a lista dos funcionarios com
+     * base nos funcionarios demitidos
+     */
     public static void actualizarDeimitidos() {
         Home1.pnlPessoas.removeAll();
         Home1.pnlPessoas.repaint();
@@ -78,10 +79,11 @@ public class ExibirPessoas {
         Home1.pnlPessoas.add(BorderLayout.CENTER, new Rolagem(new Rolagem(pess), JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER));
         Home1.pnlPessoas.revalidate();
     }
-/**
- * metodo estatico responsavel  por organizar a lista dos 
- * funcionarios com base nos funcionarios ferias
- */
+
+    /**
+     * metodo estatico responsavel por organizar a lista dos funcionarios com
+     * base nos funcionarios ferias
+     */
     public static void actualizarFerias() {
         Home1.pnlPessoas.removeAll();
         Home1.pnlPessoas.repaint();
@@ -100,10 +102,11 @@ public class ExibirPessoas {
         Home1.pnlPessoas.add(BorderLayout.CENTER, new Rolagem(new Rolagem(pess), JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER));
         Home1.pnlPessoas.revalidate();
     }
-/**
- * metodo estatico responsavel  por organizar a lista dos 
- * funcionarios com base nos funcionarios em que a empresa nao paga salario
- */
+
+    /**
+     * metodo estatico responsavel por organizar a lista dos funcionarios com
+     * base nos funcionarios em que a empresa nao paga salario
+     */
     public static void actualizarSalarios() {
         Home1.pnlPessoas.removeAll();
         Home1.pnlPessoas.repaint();
@@ -121,9 +124,10 @@ public class ExibirPessoas {
         Home1.pnlPessoas.add(BorderLayout.CENTER, new Rolagem(new Rolagem(pess), JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_NEVER));
         Home1.pnlPessoas.revalidate();
     }
-     
+
     /**
-     * este metodo chama o metodo actualizarActivos em que organiza a lista dos funcionarios activos
+     * este metodo chama o metodo actualizarActivos em que organiza a lista dos
+     * funcionarios activos
      */
     public static void actualizarAusencias() {
         actualizarActivos();

@@ -6,28 +6,24 @@
 package visao.confiuracoes;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import javax.swing.BoxLayout;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.border.EtchedBorder;
 import modelo.config.ConfigCategoria;
-import modelo.config.ConfigSubsidio;
 import visao.Home;
 import visao.Home1;
 import visao.cadastro.Cad3;
 import visao.componentes.Cor;
 import visao.componentes.Escolha;
 import visao.componentes.Introduza;
-import visao.componentes.Introduza1;
 import visao.componentes.Mostre;
 import visao.componentes.Mostre2;
 import visao.componentes.Mostre6;
@@ -44,12 +40,17 @@ public class Categorias extends Painel3 {
     Introduza txtNovaCategoria = new Introduza("ex: Nível Superior");
     Introduza txtSalBase = new Introduza("ex: 23000");
     Escolha jcbClasse = new Escolha(new String[]{"A", "B", "C", "D"});
-    MostreVerde lblSalBase = new MostreVerde(Double.toString(((ConfigCategoria) jcbCategoria.getSelectedItem()).getValor()));
+    MostreVerde lblSalBase = new MostreVerde("");// = new MostreVerde(Double.toString(((ConfigCategoria) jcbCategoria.getSelectedItem()).getValor()));
 
     public Categorias() {
         this.setLayout(new BorderLayout());
         this.add(BorderLayout.NORTH, formatarCabecalho());
         this.add(BorderLayout.CENTER, formatarGeral());
+        try {
+            lblSalBase = new MostreVerde(Double.toString(((ConfigCategoria) jcbCategoria.getSelectedItem()).getValor()));
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
     }
 
     public Painel3 formatarCabecalho() {
@@ -101,7 +102,16 @@ public class Categorias extends Painel3 {
         a.add(new Painel3());
         Painel3 b = new Painel3();
 //        b.add(new MostreVerde("Salário Base   "));
-        b.add(lblSalBase);
+        try {
+            b.add(lblSalBase);
+        }
+        catch(NullPointerException hg
+        
+        
+        ){
+        
+    }
+
         lblSalBase.setFont(new Font("calibri", Font.ROMAN_BASELINE | Font.PLAIN, 24));
 //        b.add(new MostreVerde("               "));
         a.add(b);
@@ -162,7 +172,7 @@ public class Categorias extends Painel3 {
                     JOptionPane.showMessageDialog(null, (Cad3.categorias.salvar(novoSub)) ? "Sucesso!" : "Erro");
                     limparCampos();
                     jcbCategoria.setModel(new DefaultComboBoxModel(Cad3.categorias.getCategorias()));
-                    
+
                 }
             }
 
@@ -174,8 +184,9 @@ public class Categorias extends Painel3 {
             @Override
             public void mouseClicked(MouseEvent me) {
                 int i = JOptionPane.showConfirmDialog(null, "Tem certeza?");
-                if (i == JOptionPane.YES_OPTION)
-                JOptionPane.showMessageDialog(null, (Cad3.categorias.desactivar(jcbCategoria.getSelectedItem())) ? "Sucesso!" : "Erro");
+                if (i == JOptionPane.YES_OPTION) {
+                    JOptionPane.showMessageDialog(null, (Cad3.categorias.desactivar(jcbCategoria.getSelectedItem())) ? "Sucesso!" : "Erro");
+                }
                 jcbCategoria.setModel(new DefaultComboBoxModel(Cad3.categorias.getCategorias()));
             }
 
@@ -185,10 +196,12 @@ public class Categorias extends Painel3 {
         a.add(lblExcluir);
         return a;
     }
-public void limparCampos(){
-    txtNovaCategoria.setText(txtNovaCategoria.getTexto());
-    txtSalBase.setText(txtSalBase.getTexto());
-}
+
+    public void limparCampos() {
+        txtNovaCategoria.setText(txtNovaCategoria.getTexto());
+        txtSalBase.setText(txtSalBase.getTexto());
+    }
+
     static class MostreVerde extends Mostre6 {
 
         public MostreVerde(String txt) {
